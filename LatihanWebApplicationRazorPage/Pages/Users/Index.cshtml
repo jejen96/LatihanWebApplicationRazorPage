@@ -1,0 +1,54 @@
+﻿@page
+@model LatihanWebApplicationRazorPage.Pages.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].nama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].alamat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Users) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.alamat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
